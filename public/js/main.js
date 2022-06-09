@@ -20,7 +20,6 @@ window.addEventListener('load', async () => {
     hide_card.addEventListener('click', async () => {
         for (const vid of loadedVideos) {
             await vid.play();
-            await vid.pause();
         }
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
@@ -32,23 +31,23 @@ window.addEventListener('load', async () => {
 async function cloudinaryfetch() {
     // const key = `007d1d8e-425f-474d-a8a0-7235cad917c6`
     // const key = lookUpKey;
-    // const baseUrl = "http://mind-ar-cms-dev.ap-southeast-1.elasticbeanstalk.com"
+    // const baseUrl = "https://mind-ar-cms-dev.ap-southeast-1.elasticbeanstalk.com"
     // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     // const myObject = result.data.data.data;
     const myObject = [
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
     ]
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
-    return "http://res.cloudinary.com/dwuqadyl0/raw/upload/v1653930595/mind_ar/targets-both/1e38422d-5a8b-45af-b89a-d012c2c3dd46"
+    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1653930595/mind_ar/targets-both/1e38422d-5a8b-45af-b89a-d012c2c3dd46"
 }
 
 //helper function which creates one division consisting of multiple video elements
@@ -113,13 +112,13 @@ async function start_ar(loadedChromaVids, mind_file) {
 
             anchor.group.add(GSplane);
 
-            anchor.onTargetFound = () => {
-                // video.muted = false;
-                GSvideo.play();
-            }
-            anchor.onTargetLost = () => {
-                GSvideo.pause();
-            }
+            // anchor.onTargetFound = () => {
+            //     // video.muted = false;
+            //     GSvideo.play();
+            // }
+            // anchor.onTargetLost = () => {
+            //     GSvideo.pause();
+            // }
         }
     }
     await mindarThree.start();
@@ -143,6 +142,8 @@ function createGSplane(GSvideo) {
 }
 
 function hideDiv() {
-    const div = document.getElementById("welcome");
-    div.classList.toggle('hidden');
+    const div_list = document.getElementById("welcome");
+
+    div_list.style.display = "none";
+
 }
