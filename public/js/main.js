@@ -100,23 +100,31 @@ async function start_ar(loadedChromaVids, mind_file) {
     const anchors = new Array();
     for (let i = 0; i < loadedChromaVids.length; i++) {
 
-        const GSvideo = loadedChromaVids[i];
-        const GSplane = createGSplane(GSvideo, 1, 3 / 4);
-
         anchors.push(mindarThree.addAnchor(i));
+        const GSvideo = loadedChromaVids[i];;
+        let GSplane;
+
         if (i < anchors.length) {
+
             const anchor = anchors[i];
 
-            anchor.group.add(GSplane);
+            const tap_on_me = document.getElementById('tap_on_me');
 
             anchor.onTargetFound = () => {
-                GSvideo.play();
+
+                tap_on_me.style.display = "block";
                 const play_tap = document.getElementById('my-ar-container');
+
                 play_tap.addEventListener('click', async () => {
+                    tap_on_me.style.display = "none";
+                    GSplane = createGSplane(GSvideo, 1, 3 / 4);
+                    anchor.group.add(GSplane);
                     GSvideo.play();
                 })
+
             }
             anchor.onTargetLost = () => {
+                tap_on_me.style.display = "none";
                 GSvideo.pause();
             }
         }

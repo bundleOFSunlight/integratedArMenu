@@ -36,6 +36,47 @@
             margin: 0 auto 0 auto;
             visibility: hidden;
         }
+
+        .Flex-color-Special {
+            text-shadow:
+                0 0 10px rgb(255, 0, 0, 0),
+                0 0 20px rgb(255, 0, 0, 0),
+                0 0 30px rgb(240, 76, 35),
+                0 0 40px #fff,
+                0 0 70px #fff;
+
+            color: #fff;
+            font-weight: 900;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            display: none;
+
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+            0% {
+                opacity: 0;
+            }
+        }
+
+        .Flex-fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-delay: 0s;
+        }
     </style>
 </head>
 
@@ -48,7 +89,7 @@
                     <div class="p-5" class="col-md-12">
                         <div id="welcome">
                             <h2>
-                                <a>AUGMENTED REALITY DINING</a>
+                                <a>AR DINING</a>
                             </h2>
                             <br>
                         </div>
@@ -64,7 +105,7 @@
             </div>
         </div>
     </div>
-    <p id="demo"></p>
+    <h3 id="tap_on_me" class="margin Flex-color-Special Flex-fadeIn">Tap on me!</h3>
     <div id="my-ar-container"></div>
 </body>
 <script>
