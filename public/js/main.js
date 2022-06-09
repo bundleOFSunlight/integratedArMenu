@@ -107,9 +107,9 @@ async function start_ar(loadedChromaVids, mind_file) {
         if (i < anchors.length) {
 
             const anchor = anchors[i];
-
             const tap_on_me = document.getElementById('tap_on_me');
 
+            // when matched case
             anchor.onTargetFound = () => {
 
                 tap_on_me.style.display = "block";
