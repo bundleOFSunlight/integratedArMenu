@@ -18,9 +18,6 @@ window.addEventListener('load', async () => {
     startButton.style.visibility = "visible";
     const hide_card = document.getElementById('hiddingCard');
     hide_card.addEventListener('click', async () => {
-        for (const vid of loadedVideos) {
-            await vid.play();
-        }
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
     })
@@ -112,13 +109,16 @@ async function start_ar(loadedChromaVids, mind_file) {
 
             anchor.group.add(GSplane);
 
-            // anchor.onTargetFound = () => {
-            //     // video.muted = false;
-            //     GSvideo.play();
-            // }
-            // anchor.onTargetLost = () => {
-            //     GSvideo.pause();
-            // }
+            anchor.onTargetFound = () => {
+                GSvideo.play();
+                const play_tap = document.getElementById('my-ar-container');
+                play_tap.addEventListener('click', async () => {
+                    GSvideo.play();
+                })
+            }
+            anchor.onTargetLost = () => {
+                GSvideo.pause();
+            }
         }
     }
     await mindarThree.start();
