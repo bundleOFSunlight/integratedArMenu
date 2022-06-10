@@ -1,7 +1,8 @@
 import { createChromaMaterial } from './chroma-video.js';
 
-
 const THREE = window.MINDAR.IMAGE.THREE;
+
+let is_tap = true;
 
 window.addEventListener('load', async () => {
     //function to fetch videos and create a div of the video elements 
@@ -84,6 +85,14 @@ async function onInit(loadedChromaVids, mind_file) {
     async function eventHandler(e) {
         await start_ar(loadedChromaVids, mind_file);
         // remove this handler
+        const play_tap = document.getElementById('my-ar-container');
+        play_tap.addEventListener('click', async () => {
+            for (const video of loadedChromaVids) {
+                video.play()
+            }
+            tap_on_me.style.display = "none";
+            is_tap = false;
+        })
         document.body.removeEventListener('click', eventHandler, false);
     }
     document.body.addEventListener("click", eventHandler);
@@ -102,29 +111,23 @@ async function start_ar(loadedChromaVids, mind_file) {
 
         anchors.push(mindarThree.addAnchor(i));
         const GSvideo = loadedChromaVids[i];;
-        let GSplane;
+        const GSplane = createGSplane(GSvideo, 1, 3 / 4);
 
         if (i < anchors.length) {
 
             const anchor = anchors[i];
-            const tap_on_me = document.getElementById('tap_on_me');
+            anchor.group.add(GSplane);
 
             // when matched case
             anchor.onTargetFound = () => {
-
-                tap_on_me.style.display = "block";
-                const play_tap = document.getElementById('my-ar-container');
-
-                play_tap.addEventListener('click', async () => {
-                    tap_on_me.style.display = "none";
-                    GSplane = createGSplane(GSvideo, 1, 3 / 4);
-                    anchor.group.add(GSplane);
-                    GSvideo.play();
-                })
-
+                if (is_tap) {
+                    const tap_on_me = document.getElementById('tap_on_me');
+                    tap_on_me.style.display = "block";
+                }
+                GSvideo.play();
             }
             anchor.onTargetLost = () => {
-                tap_on_me.style.display = "none";
+                // tap_on_me.style.display = "none";
                 GSvideo.pause();
             }
         }
