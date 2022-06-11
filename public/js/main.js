@@ -2,8 +2,6 @@ import { createChromaMaterial } from './chroma-video.js';
 
 const THREE = window.MINDAR.IMAGE.THREE;
 
-let is_tap = true;
-
 window.addEventListener('load', async () => {
     //function to fetch videos and create a div of the video elements 
     const mind_file = await cloudinaryfetch();
@@ -88,10 +86,6 @@ async function loadFirstVideo(loadedChromaVids) {
         for (const video of loadedChromaVids) {
             video.play()
         }
-        if (tap_on_me.style.display = "block") {
-            is_tap = false;
-            tap_on_me.style.display = "none";
-        }
     })
 }
 
@@ -118,14 +112,9 @@ async function start_ar(loadedChromaVids, mind_file) {
 
             // when matched case
             anchor.onTargetFound = () => {
-                // if (is_tap) {
-                //     const tap_on_me = document.getElementById('tap_on_me');
-                //     tap_on_me.style.display = "block";
-                // }
                 GSvideo.play();
             }
             anchor.onTargetLost = () => {
-                // tap_on_me.style.display = "none";
                 GSvideo.pause();
             }
         }
