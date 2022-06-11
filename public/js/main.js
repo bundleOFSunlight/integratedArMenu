@@ -13,7 +13,6 @@ window.addEventListener('load', async () => {
         await vid.load();
     }
     //start button to overcome IOS browser
-    await onInit(loadedVideos, mind_file);
     //button will appear upon load 
     const startButton = document.getElementById('ready');
     startButton.style.visibility = "visible";
@@ -21,6 +20,8 @@ window.addEventListener('load', async () => {
     hide_card.addEventListener('click', async () => {
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
+        await start_ar(loadedVideos, mind_file);
+        // await loadFirstVideo(loadedVideos)
     })
 });
 
@@ -80,23 +81,19 @@ async function createVideoElement(videoUrl) {
     return video;
 }
 
-async function onInit(loadedChromaVids, mind_file) {
-    //should listen for clicks only after first page
-    async function eventHandler(e) {
-        await start_ar(loadedChromaVids, mind_file);
-        // remove this handler
-        const play_tap = document.getElementById('my-ar-container');
-        play_tap.addEventListener('click', async () => {
-            for (const video of loadedChromaVids) {
-                video.play()
-            }
-            tap_on_me.style.display = "none";
+async function loadFirstVideo(loadedChromaVids) {
+    const play_tap = document.getElementById('my-ar-container');
+    play_tap.addEventListener('click', async () => {
+        for (const video of loadedChromaVids) {
+            video.play()
+        }
+        if (tap_on_me.style.display = "block") {
             is_tap = false;
-        })
-        document.body.removeEventListener('click', eventHandler, false);
-    }
-    document.body.addEventListener("click", eventHandler);
+            tap_on_me.style.display = "none";
+        }
+    })
 }
+
 
 async function start_ar(loadedChromaVids, mind_file) {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
@@ -120,10 +117,10 @@ async function start_ar(loadedChromaVids, mind_file) {
 
             // when matched case
             anchor.onTargetFound = () => {
-                if (is_tap) {
-                    const tap_on_me = document.getElementById('tap_on_me');
-                    tap_on_me.style.display = "block";
-                }
+                // if (is_tap) {
+                //     const tap_on_me = document.getElementById('tap_on_me');
+                //     tap_on_me.style.display = "block";
+                // }
                 GSvideo.play();
             }
             anchor.onTargetLost = () => {
