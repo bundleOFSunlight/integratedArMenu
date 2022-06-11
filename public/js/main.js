@@ -17,11 +17,12 @@ window.addEventListener('load', async () => {
     const startButton = document.getElementById('ready');
     startButton.style.visibility = "visible";
     const hide_card = document.getElementById('hiddingCard');
-    hide_card.addEventListener('click', async () => {
+    hide_card.addEventListener('click', async function loadedPlanes() {
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
         await start_ar(loadedVideos, mind_file);
         // await loadFirstVideo(loadedVideos)
+        document.body.removeEventListener("click", loadedPlanes, false);
     })
 });
 
