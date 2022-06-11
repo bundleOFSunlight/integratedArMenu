@@ -10,7 +10,6 @@ window.addEventListener('load', async () => {
     for (const vid of loadedVideos) {
         await vid.load();
     }
-    //start button to overcome IOS browser
     //button will appear upon load 
     const startButton = document.getElementById('ready');
     startButton.style.visibility = "visible";
