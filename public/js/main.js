@@ -146,13 +146,10 @@ function createGSplane(GSvideo) {
     //GSplane.position.z = 0.05;
     GSplane.rotation.z = Math.PI / 2;
     //GSplane.position.x = -0.2;
-
     return GSplane
 }
 
 function hideDiv() {
     const div_list = document.getElementById("welcome");
-
     div_list.style.display = "none";
-
 }
