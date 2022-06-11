@@ -19,7 +19,7 @@ window.addEventListener('load', async () => {
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
         await start_ar(loadedVideos, mind_file);
-        // await loadFirstVideo(loadedVideos)
+        await loadFirstVideo(loadedVideos)
         document.body.removeEventListener("click", loadedPlanes, false);
     })
 });
