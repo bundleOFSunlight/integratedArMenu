@@ -21,18 +21,18 @@ window.addEventListener('load', async () => {
         await loadFirstVideo(loadedVideos)
         document.body.removeEventListener("click", loadedPlanes, false);
     })
+
 });
 
 //helper functions
 
 async function cloudinaryfetch() {
     const key = lookUpKey;
-    const baseUrl = "http://127.0.0.1:9512"
+    const baseUrl = "http://192.168.1.22:9512"
     const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     const myObject = result.data.data.data;
-    console.log(myObject)
     await createVideoDivision(myObject);
-    // return result.data.data.mind_file
+    // return result.data.data.mind_filestart
     return result.data.data.mind_file;
 }
 
