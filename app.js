@@ -6,10 +6,7 @@ let logger = require('morgan');
 let flash = require('express-flash');
 let session = require('express-session');
 let fileUpload = require('express-fileupload');
-//==login
-const passport = require("passport")
-const methodOverride = require('method-override')
-//login==
+
 //--------------route paths-----------
 let indexRouter = require('./routes/index');
 
@@ -34,11 +31,6 @@ app.use(session({
   secret: "secret"
 }))
 app.use(flash());
-//======login=========
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(methodOverride('_method'))
-
 //========routers============
 app.use('/', indexRouter);
 
