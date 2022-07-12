@@ -1,10 +1,19 @@
 {
   "name": "ar_menu",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "This example is so cool.",
+  "main": "node ./bin/www",
   "scripts": {
-    "start": "node ./bin/www",
-    "build": "nodemon ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "AR",
+    "MENU"
+  ],
+  "author": "Cai JingHong",
+  "license": "MIT",
+  "engines": {
+    "node": "14.18.1"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
