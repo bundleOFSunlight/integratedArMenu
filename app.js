@@ -28,7 +28,6 @@ app.use(
     saveUninitialized: false, // only save upon assigning attribute
     rolling: true, //every call will renew it
     resave: false,
-    store: new session.sessionstore,
     cookie: {
       expires: 10 * 1000,
       secure: true
