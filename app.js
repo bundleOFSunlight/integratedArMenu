@@ -4,7 +4,7 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let flash = require('express-flash');
-let session = require('express-session');
+let session = require('cookie-session');
 let fileUpload = require('express-fileupload');
 
 //--------------route paths-----------
@@ -22,7 +22,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-app.set('trust proxy', 1);
 app.use(session({
   cookie: { maxAge: 60000 },
   store: new session.MemoryStore,
