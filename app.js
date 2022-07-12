@@ -6,7 +6,10 @@ let logger = require('morgan');
 let flash = require('express-flash');
 let session = require('express-session');
 let fileUpload = require('express-fileupload');
-
+//==login
+const passport = require("passport")
+const methodOverride = require('method-override')
+//login==
 //--------------route paths-----------
 let indexRouter = require('./routes/index');
 
@@ -22,27 +25,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-
-app.set('trust proxy', 1);
 app.use(session({
-  cookie: {
-    secure: true,
-    maxAge: 60000
-  },
+  cookie: { maxAge: 1200000 },
   store: new session.MemoryStore,
-  secret: 'secret',
   saveUninitialized: true,
-  resave: false
-}));
-
-app.use(function (req, res, next) {
-  if (!req.session) {
-    return next(new Error('Oh no')) //handle error
-  }
-  next() //otherwise continue
-})
-
+  resave: true,
+  secret: "secret"
+}))
 app.use(flash());
+//======login=========
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride('_method'))
+
 //========routers============
 app.use('/', indexRouter);
 
