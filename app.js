@@ -21,19 +21,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-const session = require('express-session');
-app.use(
-  session({
-    secret: 'keyboard cat',
-    saveUninitialized: false, // only save upon assigning attribute
-    rolling: true, //every call will renew it
-    resave: false,
-    cookie: {
-      expires: 10 * 1000,
-      secure: true
-    },
-  }),
-);
+
+const session = require('cookie-session');
+
+app.use(session({
+  name: 'session',
+  keys: ["keyboard_cat"],
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
 app.use(flash());
 
 //========routers============
