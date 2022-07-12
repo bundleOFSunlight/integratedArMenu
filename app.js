@@ -24,9 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 app.use(session({
   cookie: { maxAge: 60000 },
-  store: undefined,
-  saveUninitialized: true,
-  resave: true,
+  store: new session.MemoryStore,
+  saveUninitialized: false,
+  resave: false,
   secret: "secret"
 }))
 app.use(flash());
