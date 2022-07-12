@@ -4,7 +4,9 @@
   "description": "This example is so cool.",
   "main": "node ./bin/www",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "build": "nodemon ./bin/www"
   },
   "keywords": [
     "AR",
