@@ -4,7 +4,6 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let flash = require('express-flash');
-let session = require('express-session');
 let fileUpload = require('express-fileupload');
 
 //--------------route paths-----------
@@ -22,13 +21,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-app.use(session({
-  cookie: { maxAge: 60000 },
-  store: new session.MemoryStore,
-  saveUninitialized: false,
-  resave: false,
-  secret: "secret"
-}))
+const session = require('express-session');
+app.use(
+  session({
+    secret: 'keyboard cat',
+    saveUninitialized: false, // only save upon assigning attribute
+    rolling: true, //every call will renew it
+    resave: false,
+    cookie: {
+      expires: 10 * 1000,
+    },
+  }),
+);
 app.use(flash());
 
 
