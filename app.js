@@ -4,7 +4,7 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let flash = require('express-flash');
-let session = require('cookie-session');
+let session = require('express-session');
 let fileUpload = require('express-fileupload');
 
 //--------------route paths-----------
@@ -22,13 +22,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
+
+app.set('trust proxy', 1);
 app.use(session({
-  cookie: { maxAge: 60000 },
+  cookie: {
+    secure: true,
+    maxAge: 60000
+  },
   store: new session.MemoryStore,
+  secret: 'secret',
   saveUninitialized: true,
-  resave: false,
-  secret: "secret"
-}))
+  resave: false
+}));
+
+app.use(function (req, res, next) {
+  if (!req.session) {
+    return next(new Error('Oh no')) //handle error
+  }
+  next() //otherwise continue
+})
+
 app.use(flash());
 //========routers============
 app.use('/', indexRouter);
