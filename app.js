@@ -25,11 +25,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
+app.set('trust proxy', 1);
 app.use(session({
-  cookie: { maxAge: 1200000 },
+  cookie: { maxAge: 60000 },
   store: new session.MemoryStore,
   saveUninitialized: true,
-  resave: true,
+  resave: false,
   secret: "secret"
 }))
 app.use(flash());
