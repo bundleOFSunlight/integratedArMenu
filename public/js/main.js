@@ -32,13 +32,13 @@ async function cloudinaryfetch() {
     // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     // const myObject = result.data.data.data;
     const myObject = [
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
+        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731459/mind_ar/uykd_lengzaab_GS/c20c6510-1347-4bc4-a873-e9e08ede5180.mp4",
+        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731494/mind_ar/uykd_massaman_gS/e0ee5799-19a8-4e50-930f-f9a245e319cb.mov",
+        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731521/mind_ar/somtam_vibrant%20%281%29/4eb42e27-8f9f-4076-8ac1-2793ec6fd0a5.mp4",
     ]
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
-    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1657651137/mind_ar/demo_ar/905cd40e-292e-4074-8e29-8c414a6caa8a"
+    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1657731953/mind_ar/production3item/ebc11dd3-ed02-46c5-b4b3-e94b9739745a"
 }
 
 //helper function which creates one division consisting of multiple video elements
