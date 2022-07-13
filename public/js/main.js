@@ -38,7 +38,7 @@ async function cloudinaryfetch() {
     ]
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
-    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1657734358/mind_ar/targets%20%284%29/dc559d20-1e45-478e-ae89-ccb42c304f8f"
+    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1657734806/mind_ar/targets%20%285%29/58ab9a3d-aba7-499d-82a0-c5d71e78c1ba"
 }
 
 //helper function which creates one division consisting of multiple video elements
