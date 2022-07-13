@@ -33,7 +33,7 @@ async function cloudinaryfetch() {
     // const myObject = result.data.data.data;
     const myObject = [
         "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731459/mind_ar/uykd_lengzaab_GS/c20c6510-1347-4bc4-a873-e9e08ede5180.mp4",
-        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657733183/mind_ar/IMG_3554/9926381a-620b-48b2-b132-4fc2f6c810ad.mp4",
+        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731494/mind_ar/uykd_massaman_gS/e0ee5799-19a8-4e50-930f-f9a245e319cb.mov",
         "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731521/mind_ar/somtam_vibrant%20%281%29/4eb42e27-8f9f-4076-8ac1-2793ec6fd0a5.mp4",
     ]
     await createVideoDivision(myObject);
