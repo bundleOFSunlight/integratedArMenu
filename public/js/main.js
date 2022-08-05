@@ -27,18 +27,18 @@ window.addEventListener('load', async () => {
 
 async function cloudinaryfetch() {
     // const key = `007d1d8e-425f-474d-a8a0-7235cad917c6`
-    // const key = lookUpKey;
-    // const baseUrl = "https://mind-ar-cms-dev.ap-southeast-1.elasticbeanstalk.com"
-    // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
-    // const myObject = result.data.data.data;
-    const myObject = [
-        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731459/mind_ar/uykd_lengzaab_GS/c20c6510-1347-4bc4-a873-e9e08ede5180.mp4",
-        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731494/mind_ar/uykd_massaman_gS/e0ee5799-19a8-4e50-930f-f9a245e319cb.mov",
-        "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731521/mind_ar/somtam_vibrant%20%281%29/4eb42e27-8f9f-4076-8ac1-2793ec6fd0a5.mp4",
-    ]
+    const key = lookUpKey;
+    const baseUrl = "https://secret-chamber-85356.herokuapp.com"
+    const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
+    const myObject = result.data.data.data;
+    // const myObject = [
+    //     "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731459/mind_ar/uykd_lengzaab_GS/c20c6510-1347-4bc4-a873-e9e08ede5180.mp4",
+    //     "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731494/mind_ar/uykd_massaman_gS/e0ee5799-19a8-4e50-930f-f9a245e319cb.mov",
+    //     "https://res.cloudinary.com/dwuqadyl0/video/upload/v1657731521/mind_ar/somtam_vibrant%20%281%29/4eb42e27-8f9f-4076-8ac1-2793ec6fd0a5.mp4",
+    // ]
     await createVideoDivision(myObject);
-    // return result.data.data.mind_file
-    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1657735641/mind_ar/targets%20%284%29/168ab87b-5764-4d25-b318-412822af971b"
+    return result.data.data.mind_file
+    // return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1657735641/mind_ar/targets%20%284%29/168ab87b-5764-4d25-b318-412822af971b"
 }
 
 //helper function which creates one division consisting of multiple video elements
